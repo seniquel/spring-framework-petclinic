@@ -537,6 +537,12 @@
             <name>Spring Milestone Repository</name>
             <url>https://repo.spring.io/milestone</url>
         </repository>
-    </repositories>
+	</repositories>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://URL_NEXUS/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
