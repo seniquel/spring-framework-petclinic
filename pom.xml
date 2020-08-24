@@ -100,6 +100,13 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://nexus:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
     <dependencies>
         <dependency>
@@ -539,10 +546,4 @@
         </repository>
 	</repositories>
 
-	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<url>http://nexus/repository/maven-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
 </project>
