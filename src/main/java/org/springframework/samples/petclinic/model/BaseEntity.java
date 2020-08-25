@@ -35,7 +35,7 @@ public class BaseEntity {
     public Integer getId() {
         return id;
     }
-dpqidspoiqspdoiqspodiposdpqsidpoqispd
+
     public void setId(Integer id) {
         this.id = id;
     }

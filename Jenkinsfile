@@ -12,6 +12,11 @@ pipeline {
                 sh 'mvn -v'
             }
         }
+        stage('checkout') {
+            steps{
+                git 'https://github.com/seniquel/spring-framework-petclinic.git'
+            }
+        }
         stage('compile') {
             steps{
                 sh 'mvn clean compile'
@@ -24,15 +29,20 @@ pipeline {
             post{
                 success {
                     junit '**/target/surefire-reports/*.xml'
-                    //discordSend description: 'Je mange du caca', footer: '', image: '', link: '', result: '', thumbnail: '', title: 'C\'est moi Jenkins', webhookURL: 'https://discordapp.com/api/webhooks/747819422705778738/dHWPHidlNLpiiKftWU84__Ss2LAkws77Swfdk5OWs22qla3hlI1B4zywW8ROg4nAwjRM'
-                    slackSend channel: 'jenkins-training', color: 'good', message: 'Succès multibranch (Léo)', tokenCredentialId: 'slack-token', teamDomain: 'devinstitut'
-                }
-                failure {
-                    slackSend channel: 'jenkins-training', color: 'danger', message: 'Succès multibranch (Léo)', tokenCredentialId: 'slack-token', teamDomain: 'devinstitut'
-                    
                 }
             }
         }
     }
+    post {
+            success {
+                //discordSend description: 'Je mange du caca', footer: '', image: '', link: '', result: '', thumbnail: '', title: 'C\'est moi Jenkins', webhookURL: 'https://discordapp.com/api/webhooks/747819422705778738/dHWPHidlNLpiiKftWU84__Ss2LAkws77Swfdk5OWs22qla3hlI1B4zywW8ROg4nAwjRM'
+                slackSend channel: 'jenkins-training', color: 'good', message: 'Léo feat-01 success', tokenCredentialId: 'slack-token', teamDomain: 'devinstitut'
+            }
+            failure {
+            slackSend channel: 'jenkins-training', color: 'danger', message: 'Léo feat-01 fail', tokenCredentialId: 'slack-token', teamDomain: 'devinstitut'
+                    
+            }
+    }
 }
-a
+
+
